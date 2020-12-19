@@ -1,25 +1,16 @@
-export interface IUser {
-    id: number;
-    name: string;
-    email: string;
-}
 
-class User implements IUser {
 
-    public id: number;
-    public name: string;
-    public email: string;
+class User {
 
-    constructor(nameOrUser: string | IUser, email?: string, id?: number) {
-        if (typeof nameOrUser === 'string') {
-            this.name = nameOrUser;
-            this.email = email || '';
-            this.id = id || -1;
-        } else {
-            this.name = nameOrUser.name;
-            this.email = nameOrUser.email;
-            this.id = nameOrUser.id;
-        }
+    public firstName: string;
+    public lastName: string;
+    public clientId: string;
+
+    constructor(firstName: string, lastName: string, clientId: string) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.clientId = clientId;
+        
     }
 }
 
