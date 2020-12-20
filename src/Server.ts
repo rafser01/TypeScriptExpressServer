@@ -13,7 +13,7 @@ import logger from '@shared/Logger';
 const app = express();
 const { BAD_REQUEST } = StatusCodes;
 
-
+const cors = require('cors')
 
 /************************************************************************************
  *                              Set basic express settings
@@ -32,9 +32,12 @@ if (process.env.NODE_ENV === 'development') {
 if (process.env.NODE_ENV === 'production') {
     app.use(helmet());
 }
-
+var corsOptions = {
+    origin: 'http://localhost:4200',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 // Add APIs
-app.use('/', BaseRouter);
+app.use('/', cors(corsOptions), BaseRouter);
 
 // Print API errors
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
